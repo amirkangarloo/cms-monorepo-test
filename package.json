@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "api": "nx serve api"
+    "start:api": "nx serve api",
+    "docker:db:up": "docker run --name postgres -e POSTGRES_USER=root -e POSTGRES_PASSWORD=bye -e POSTGRES_DB=cms -p 5432:5432 -d postgres:12-alpine",
+    "docker:db:status": "docker ps",
+    "docker:db:down": "docker rm -f postgres"
   },
   "private": true,
   "devDependencies": {
