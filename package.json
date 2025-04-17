@@ -4,9 +4,15 @@
   "license": "MIT",
   "scripts": {
     "start:api": "nx serve api",
+    "db:generate": "prisma generate --schema=libs/database/prisma/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema=libs/database/prisma/schema.prisma",
+    "db:view": "prisma studio --schema=libs/database/prisma/schema.prisma",
+    "db:push": "prisma db push --schema=libs/database/prisma/schema.prisma",
+    "db:seed": "prisma db seed --schema=libs/database/prisma/schema.prisma",
     "docker:db:up": "docker run --name postgres -e POSTGRES_USER=root -e POSTGRES_PASSWORD=bye -e POSTGRES_DB=cms -p 5432:5432 -d postgres:12-alpine",
     "docker:db:status": "docker ps",
-    "docker:db:down": "docker rm -f postgres"
+    "docker:db:down": "docker rm -f postgres",
+    "postinstall": "npm run db:generate"
   },
   "private": true,
   "devDependencies": {
